@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Keuangan Prostrike 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; }
+.header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1a3a5c, #0d2137); border-radius: 12px; margin-bottom: 20px; }
+.header h1 { font-size: 28px; color: #fff; }
+.header p { color: #8ab4d6; margin-top: 5px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.kpi-card { background: #162230; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #1e3448; }
+.kpi-card .label { font-size: 11px; color: #7a9bb5; text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi-card .value { font-size: 20px; font-weight: 700; color: #fff; margin-top: 4px; }
+.kpi-card .sub { font-size: 11px; color: #4caf84; margin-top: 2px; }
+.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.chart-card { background: #162230; border-radius: 10px; padding: 16px; border: 1px solid #1e3448; }
+.chart-card.full { grid-column: 1 / -1; }
+.chart-card h3 { font-size: 14px; color: #8ab4d6; margin-bottom: 12px; }
+canvas { width: 100% !important; max-height: 320px; }
+.footer { text-align: center; margin-top: 20px; font-size: 11px; color: #4a6b85; }
+.refresh-btn { display: inline-block; margin: 10px 0 0 0; padding: 8px 20px; background: #2e8b57; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+.refresh-btn:hover { background: #3aa86a; }
+.refresh-btn:active { background: #247148; }
+.refresh-btn.loading { opacity: 0.6; pointer-events: none; }
+#refresh-status { font-size: 12px; color: #8ab4d6; margin-left: 10px; display: inline-block; }
+.stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.stock-card { border-radius: 10px; padding: 14px 16px; text-align: center; border: 1px solid; }
+.stock-card.critical { background: #2a1518; border-color: #e74c3c; }
+.stock-card.warning { background: #2a2210; border-color: #f39c12; }
+.stock-card.ok { background: #162230; border-color: #1e3448; }
+.stock-card .stock-icon { font-size: 24px; margin-bottom: 4px; }
+.stock-card .stock-label { font-size: 11px; color: #7a9bb5; text-transform: uppercase; letter-spacing: 0.5px; }
+.stock-card .stock-value { font-size: 28px; font-weight: 700; margin: 2px 0; }
+.stock-card.critical .stock-value { color: #e74c3c; }
+.stock-card.warning .stock-value { color: #f39c12; }
+.stock-card.ok .stock-value { color: #2ecc71; }
+.stock-card .stock-detail { font-size: 10px; color: #888; margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Dashboard Keuangan Prostrike</h1>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 24 Jun 2026 17:18 WIB</span></p>
+  <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
+  <span id="refresh-status"></span>
+</div>
+
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
+  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.59M</div><div class="sub">Margin 82%</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 858K</div><div class="sub">Margin 27.0%</div></div>
+  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 549K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 316K</div></div>
+  <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 269K</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.45M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.6x</div></div>
+</div>
+
+<div class="stock-grid">
+  <div class="stock-card critical">
+    <div class="stock-icon">🔴</div>
+    <div class="stock-label">Amis Wangi</div>
+    <div class="stock-value">2 pcs</div>
+  </div>
+  <div class="stock-card critical">
+    <div class="stock-icon">🔴</div>
+    <div class="stock-label">Kweni Daging</div>
+    <div class="stock-value">0 pcs</div>
+  </div>
+  <div class="stock-card critical">
+    <div class="stock-icon">🔴</div>
+    <div class="stock-label">Raja Goda</div>
+    <div class="stock-value">2 pcs</div>
+  </div>
+  <div class="stock-card warning">
+    <div class="stock-icon">🟡</div>
+    <div class="stock-label">Doger</div>
+    <div class="stock-value">3 pcs</div>
+  </div>
+  <div class="stock-card ok">
+    <div class="stock-icon">🟢</div>
+    <div class="stock-label">🧻 Bubble Wrap</div>
+    <div class="stock-value">30 pcs</div>
+  </div>
+</div>
+
+<div class="chart-grid">
+  <div class="chart-card full">
+    <h3>Pendapatan & Profit per Bulan</h3>
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>Unit Terjual per Produk per Bulan</h3>
+    <canvas id="chart2"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>Profit / Loss per Bulan</h3>
+    <canvas id="chart3"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>Komposisi Beban</h3>
+    <canvas id="chart4"></canvas>
+  </div>
+  <div class="chart-card">
+    <h3>Rasio Keuangan</h3>
+    <canvas id="chart5"></canvas>
+  </div>
+</div>
+
+<div class="footer">Auto-generated 24 Jun 2026 17:18 WIB · Data dari Google Sheets</div>
+
+<script>
+const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
+const fmtRp = (v) => 'Rp ' + (v/1000).toFixed(0) + 'rb';
+
+// Refresh button handler (reloads page — data updated by cron every 4h)
+function doRefresh() {
+  const btn = document.getElementById('refresh-btn');
+  const status = document.getElementById('refresh-status');
+  btn.classList.add('loading');
+  btn.textContent = '⏳ Memuat ulang...';
+  status.textContent = '';
+  location.reload(true);
+}
+
+// Chart 1: Pendapatan & Profit
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [
+      { label: 'Pendapatan', data: [158000.0, 455000.0, 79000.0, 1450864.0, 237000.0, 479491.0], backgroundColor: '#2e8b57', borderRadius: 4 },
+      { label: 'Profit', data: [47545.0, 302225.0, 28845.0, 849861.0, 212814.0, -907395.0], backgroundColor: '#3b7dd8', borderRadius: 4 },
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { color: '#ccc', padding: 16, usePointStyle: true } } },
+    scales: {
+      y: { ticks: { color: '#888', callback: v => fmtRp(v) }, grid: { color: '#1e3448' } },
+      x: { ticks: { color: '#888' }, grid: { display: false } }
+    }
+  }
+});
+
+// Chart 2: Unit per Produk (Stacked)
+const colors2 = ['#e74c3c','#2ecc71','#3498db','#9b59b6'];
+new Chart(document.getElementById('chart2'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{"label": "Amis Wangi", "data": [0.0, 5.0, 1.0, 11.0, 0.0, 0.0], "backgroundColor": "#e74c3c"}, {"label": "Kweni Daging", "data": [0.0, 1.0, 0.0, 2.0, 0.0, 2.0], "backgroundColor": "#2ecc71"}, {"label": "Raja Goda", "data": [0.0, 0.0, 0.0, 2.0, 0.0, 2.0], "backgroundColor": "#3498db"}, {"label": "Doger", "data": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "backgroundColor": "#9b59b6"}]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { color: '#ccc', padding: 10, usePointStyle: true } } },
+    scales: {
+      x: { stacked: true, ticks: { color: '#888' }, grid: { display: false } },
+      y: { stacked: true, ticks: { color: '#888', stepSize: 2 }, grid: { color: '#1e3448' }, title: { display: true, text: 'Unit (pcs)', color: '#888' } }
+    }
+  }
+});
+
+// Chart 3: Profit/Loss
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: months,
+    datasets: [{
+      label: 'Profit/Loss',
+      data: [47545.0, 302225.0, 28845.0, 849861.0, 212814.0, -907395.0],
+      backgroundColor: ctx => ctx.raw >= 0 ? '#2ecc71' : '#e74c3c',
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { ticks: { color: '#888', callback: v => fmtRp(v) }, grid: { color: '#1e3448' } },
+      x: { ticks: { color: '#888' }, grid: { display: false } }
+    }
+  }
+});
+
+// Chart 4: Komposisi Beban (Doughnut)
+new Chart(document.getElementById('chart4'), {
+  type: 'doughnut',
+  data: {
+    labels: ['HPP', 'Biaya Platform', 'Biaya Pengiriman', 'Biaya Admin', 'Transportasi'],
+    datasets: [{
+      data: [92399.0, 1447, 216, 50, 11],
+      backgroundColor: ['#e67e22','#e74c3c','#3498db','#9b59b6','#1abc9c'],
+      borderColor: '#162230', borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'bottom', labels: { color: '#ccc', padding: 10, usePointStyle: true } } }
+  }
+});
+
+// Chart 5: Rasio Keuangan (Horizontal Bar)
+new Chart(document.getElementById('chart5'), {
+  type: 'bar',
+  data: {
+    labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
+    datasets: [{
+      label: 'Nilai',
+      data: [0.816, 0.270, 6.63, 0.040, 0.193, 0.200],
+      backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
+      borderRadius: 4
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#888' }, grid: { color: '#1e3448' } },
+      y: { ticks: { color: '#ccc' }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
