@@ -39,26 +39,34 @@ canvas { width: 100% !important; max-height: 320px; }
 .stock-card.warning .stock-value { color: #f39c12; }
 .stock-card.ok .stock-value { color: #2ecc71; }
 .stock-card .stock-detail { font-size: 10px; color: #888; margin-top: 2px; }
+.table-wrap { overflow-x: auto; }
+.tx-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.tx-table th, .tx-table td { padding: 10px 8px; border-bottom: 1px solid #1e3448; text-align: left; vertical-align: top; }
+.tx-table th { color: #8ab4d6; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
+.tx-table td { color: #d8e2ea; }
+.tx-table .money { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tx-table .debit { color: #4caf84; }
+.tx-table .credit { color: #e57373; }
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 24 Jun 2026 17:18 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 01 Jul 2026 14:59 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
 
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
-  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.59M</div><div class="sub">Margin 82%</div></div>
-  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 858K</div><div class="sub">Margin 27.0%</div></div>
-  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 549K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 316K</div></div>
-  <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 269K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.45M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.6x</div></div>
+  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.41M</div><div class="sub">Margin 82%</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 659K</div><div class="sub">Margin 22.4%</div></div>
+  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 607K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
+  <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 327K</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.25M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.5x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -85,7 +93,7 @@ canvas { width: 100% !important; max-height: 320px; }
   <div class="stock-card ok">
     <div class="stock-icon">🟢</div>
     <div class="stock-label">🧻 Bubble Wrap</div>
-    <div class="stock-value">30 pcs</div>
+    <div class="stock-value">33 pcs</div>
   </div>
 </div>
 
@@ -112,7 +120,90 @@ canvas { width: 100% !important; max-height: 320px; }
   </div>
 </div>
 
-<div class="footer">Auto-generated 24 Jun 2026 17:18 WIB · Data dari Google Sheets</div>
+<div class="chart-card full" style="margin-top:16px;">
+  <h3>10 Transaksi Terakhir (Jurnal Umum)</h3>
+  <div class="table-wrap">
+    <table class="tx-table">
+      <thead>
+        <tr><th>Tanggal</th><th>Keterangan</th><th>Akun</th><th>Debet</th><th>Kredit</th></tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>01 Jul 2026</td>
+        <td>pencairan saldo shopee 79.000</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      <tr>
+        <td>01 Jul 2026</td>
+        <td>biaya platform shopee</td>
+        <td>BIAYA PLATFORM</td>
+        <td class="money debit">Rp 20.554</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>01 Jul 2026</td>
+        <td>pencairan saldo shopee 79.000</td>
+        <td>KAS DI BANK</td>
+        <td class="money debit">Rp 58.446</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>12 Jun 2026</td>
+        <td>koreksi penjualan raja goda (kurang kredit)</td>
+        <td>PENDAPATAN PENJUALAN</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 138.000</td>
+      </tr>
+      <tr>
+        <td>16 Apr 2026</td>
+        <td>koreksi biaya kirim (kurang debit)</td>
+        <td>BIAYA PENGIRIMAN</td>
+        <td class="money debit">Rp 21.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>23 Jun 2026</td>
+        <td>hpp penjualan essen doger 1 pcs</td>
+        <td>PERSEDIAAN PENDUKUNG PRODUK</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 625</td>
+      </tr>
+      <tr>
+        <td>23 Jun 2026</td>
+        <td>hpp penjualan essen doger 1 pcs</td>
+        <td>PERSEDIAAN BAHAN BAKU UTAMA</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 18.942</td>
+      </tr>
+      <tr>
+        <td>23 Jun 2026</td>
+        <td>hpp penjualan essen doger 1 pcs</td>
+        <td>BEBAN BAHAN BAKU PENDUKUNG</td>
+        <td class="money debit">Rp 625</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>23 Jun 2026</td>
+        <td>hpp penjualan essen doger 1 pcs</td>
+        <td>BEBAN BAHAN BAKU UTAMA</td>
+        <td class="money debit">Rp 18.942</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>23 Jun 2026</td>
+        <td>penjualan essen doger 1 pcs</td>
+        <td>PENDAPATAN PENJUALAN</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="footer">Auto-generated 01 Jul 2026 14:59 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -212,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.816, 0.270, 6.63, 0.040, 0.193, 0.200],
+      data: [0.821, 0.224, 5.47, 0.042, 0.155, 0.161],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
