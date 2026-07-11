@@ -53,7 +53,7 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 07 Jul 2026 17:48 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 11 Jul 2026 22:34 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
@@ -61,12 +61,12 @@ canvas { width: 100% !important; max-height: 320px; }
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
   <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.47M</div><div class="sub">Margin 82%</div></div>
-  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 693K</div><div class="sub">Margin 23.0%</div></div>
-  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 586K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 79K</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 671K</div><div class="sub">Margin 22.2%</div></div>
+  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 643K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 303K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.29M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.7x</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.27M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.5x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -129,6 +129,27 @@ canvas { width: 100% !important; max-height: 320px; }
       </thead>
       <tbody>
       <tr>
+        <td>11 Jul 2026</td>
+        <td>penarikan saldo shopee 79.000</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      <tr>
+        <td>11 Jul 2026</td>
+        <td>biaya platform shopee</td>
+        <td>BIAYA PLATFORM</td>
+        <td class="money debit">Rp 21.517</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>11 Jul 2026</td>
+        <td>penarikan saldo shopee 79.000</td>
+        <td>KAS DI BANK</td>
+        <td class="money debit">Rp 57.483</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
         <td>01 Jul 2026</td>
         <td>biaya pengiriman (gopay)</td>
         <td>KAS DI BANK</td>
@@ -177,33 +198,12 @@ canvas { width: 100% !important; max-height: 320px; }
         <td class="money debit"></td>
         <td class="money credit">Rp 79.000</td>
       </tr>
-      <tr>
-        <td>01 Jul 2026</td>
-        <td>penjualan essen gorilla amis wangi (oren)</td>
-        <td>PIUTANG SHOPEE</td>
-        <td class="money debit">Rp 79.000</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>01 Jul 2026</td>
-        <td>pencairan saldo shopee 79.000</td>
-        <td>PIUTANG SHOPEE</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 79.000</td>
-      </tr>
-      <tr>
-        <td>01 Jul 2026</td>
-        <td>biaya platform shopee</td>
-        <td>BIAYA PLATFORM</td>
-        <td class="money debit">Rp 20.554</td>
-        <td class="money credit"></td>
-      </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<div class="footer">Auto-generated 07 Jul 2026 17:48 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 11 Jul 2026 22:34 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.818, 0.230, 5.67, 0.042, 0.162, 0.168],
+      data: [0.818, 0.222, 5.54, 0.042, 0.157, 0.164],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
