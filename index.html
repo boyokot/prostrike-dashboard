@@ -53,27 +53,27 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 16 Jul 2026 14:03 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 20 Jul 2026 17:40 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
 
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
-  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.47M</div><div class="sub">Margin 82%</div></div>
-  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 671K</div><div class="sub">Margin 22.2%</div></div>
-  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 410K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
-  <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 536K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.27M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.5x</div></div>
+  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.52M</div><div class="sub">Margin 81%</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 705K</div><div class="sub">Margin 22.8%</div></div>
+  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 389K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 79K</div></div>
+  <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 512K</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.30M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.7x</div></div>
 </div>
 
 <div class="stock-grid">
   <div class="stock-card ok">
     <div class="stock-icon">🟢</div>
     <div class="stock-label">Amis Wangi</div>
-    <div class="stock-value">8 pcs</div>
+    <div class="stock-value">7 pcs</div>
   </div>
   <div class="stock-card critical">
     <div class="stock-icon">🔴</div>
@@ -93,7 +93,7 @@ canvas { width: 100% !important; max-height: 320px; }
   <div class="stock-card ok">
     <div class="stock-icon">🟢</div>
     <div class="stock-label">🧻 Bubble Wrap</div>
-    <div class="stock-value">27 pcs</div>
+    <div class="stock-value">26 pcs</div>
   </div>
 </div>
 
@@ -129,6 +129,62 @@ canvas { width: 100% !important; max-height: 320px; }
       </thead>
       <tbody>
       <tr>
+        <td>20 Jul 2026</td>
+        <td>biaya pengiriman penjualan Shopee</td>
+        <td>KAS DI BANK</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 21.000</td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>biaya pengiriman penjualan Shopee</td>
+        <td>BIAYA PENGIRIMAN</td>
+        <td class="money debit">Rp 21.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
+        <td>PERSEDIAAN PENDUKUNG PRODUK</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 625</td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
+        <td>PERSEDIAAN BAHAN BAKU UTAMA</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 23.666</td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
+        <td>BEBAN BAHAN BAKU PENDUKUNG</td>
+        <td class="money debit">Rp 625</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
+        <td>BEBAN BAHAN BAKU UTAMA</td>
+        <td class="money debit">Rp 23.666</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>penjualan essen gorilla amis wangi 1 pcs (Shopee)</td>
+        <td>PENDAPATAN PENJUALAN</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      <tr>
+        <td>20 Jul 2026</td>
+        <td>penjualan essen gorilla amis wangi 1 pcs (Shopee)</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit">Rp 79.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
         <td>16 Jul 2026</td>
         <td>penerimaan pesanan essen amis wangi 8 pcs + kweni daging 2 pcs</td>
         <td>UANG MUKA PEMBELIAN</td>
@@ -142,68 +198,12 @@ canvas { width: 100% !important; max-height: 320px; }
         <td class="money debit">Rp 233.000</td>
         <td class="money credit"></td>
       </tr>
-      <tr>
-        <td>11 Jul 2026</td>
-        <td>pemesanan essen amis wangi 8 pcs + kweni daging 2 pcs</td>
-        <td>KAS DI BANK</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 233.000</td>
-      </tr>
-      <tr>
-        <td>11 Jul 2026</td>
-        <td>pemesanan essen amis wangi 8 pcs + kweni daging 2 pcs</td>
-        <td>UANG MUKA PEMBELIAN</td>
-        <td class="money debit">Rp 233.000</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>11 Jul 2026</td>
-        <td>penarikan saldo shopee 79.000</td>
-        <td>PIUTANG SHOPEE</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 79.000</td>
-      </tr>
-      <tr>
-        <td>11 Jul 2026</td>
-        <td>biaya platform shopee</td>
-        <td>BIAYA PLATFORM</td>
-        <td class="money debit">Rp 21.517</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>11 Jul 2026</td>
-        <td>penarikan saldo shopee 79.000</td>
-        <td>KAS DI BANK</td>
-        <td class="money debit">Rp 57.483</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>01 Jul 2026</td>
-        <td>biaya pengiriman (gopay)</td>
-        <td>KAS DI BANK</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 21.000</td>
-      </tr>
-      <tr>
-        <td>01 Jul 2026</td>
-        <td>biaya pengiriman (gopay)</td>
-        <td>BIAYA PENGIRIMAN</td>
-        <td class="money debit">Rp 21.000</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>13 Jul 2026</td>
-        <td>hpp penjualan essen amis wangi (oren)</td>
-        <td>PERSEDIAAN PENDUKUNG PRODUK</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 489</td>
-      </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<div class="footer">Auto-generated 16 Jul 2026 14:03 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 20 Jul 2026 17:40 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.818, 0.222, 5.54, 0.042, 0.157, 0.164],
+      data: [0.814, 0.228, 5.74, 0.041, 0.164, 0.171],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
