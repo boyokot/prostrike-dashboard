@@ -53,7 +53,7 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 15:15 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 20:17 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
@@ -61,12 +61,12 @@ canvas { width: 100% !important; max-height: 320px; }
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
   <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.58M</div><div class="sub">Margin 81%</div></div>
-  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 759K</div><div class="sub">Margin 23.9%</div></div>
-  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 389K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 158K</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 719K</div><div class="sub">Margin 22.6%</div></div>
+  <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 507K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 316K</div></div>
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 488K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.35M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.1x</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.63M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">7.7x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -130,6 +130,48 @@ canvas { width: 100% !important; max-height: 320px; }
       <tbody>
       <tr>
         <td>25 Jul 2026</td>
+        <td>Penarikan saldo Shopee</td>
+        <td>BIAYA PLATFORM</td>
+        <td class="money debit">Rp 23.097</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Penarikan saldo Shopee</td>
+        <td>KAS DI BANK</td>
+        <td class="money debit">Rp 55.903</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Penarikan saldo Shopee</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit">Rp 79.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Penarikan saldo TikTok Shop</td>
+        <td>BIAYA PLATFORM</td>
+        <td class="money debit">Rp 17.303</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Penarikan saldo TikTok Shop</td>
+        <td>KAS DI BANK</td>
+        <td class="money debit">Rp 61.697</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Penarikan saldo TikTok Shop</td>
+        <td>PIUTANG TIKTOK SHOP</td>
+        <td class="money debit">Rp 79.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
         <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
         <td>PERSEDIAAN PENDUKUNG PRODUK</td>
         <td class="money debit"></td>
@@ -156,54 +198,12 @@ canvas { width: 100% !important; max-height: 320px; }
         <td class="money debit">Rp 23.666</td>
         <td class="money credit"></td>
       </tr>
-      <tr>
-        <td>25 Jul 2026</td>
-        <td>penjualan essen gorilla amis wangi 1 pcs (TikTok Shop)</td>
-        <td>PENDAPATAN PENJUALAN</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 79.000</td>
-      </tr>
-      <tr>
-        <td>25 Jul 2026</td>
-        <td>penjualan essen gorilla amis wangi 1 pcs (TikTok Shop)</td>
-        <td>PIUTANG TIKTOK SHOP</td>
-        <td class="money debit">Rp 79.000</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>20 Jul 2026</td>
-        <td>biaya pengiriman penjualan Shopee</td>
-        <td>KAS DI BANK</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 21.000</td>
-      </tr>
-      <tr>
-        <td>20 Jul 2026</td>
-        <td>biaya pengiriman penjualan Shopee</td>
-        <td>BIAYA PENGIRIMAN</td>
-        <td class="money debit">Rp 21.000</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>20 Jul 2026</td>
-        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
-        <td>PERSEDIAAN PENDUKUNG PRODUK</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 625</td>
-      </tr>
-      <tr>
-        <td>20 Jul 2026</td>
-        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
-        <td>PERSEDIAAN BAHAN BAKU UTAMA</td>
-        <td class="money debit"></td>
-        <td class="money credit">Rp 23.666</td>
-      </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<div class="footer">Auto-generated 25 Jul 2026 15:15 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 25 Jul 2026 20:17 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.811, 0.239, 6.06, 0.041, 0.174, 0.182],
+      data: [0.811, 0.226, 7.67, 0.038, 0.155, 0.161],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
