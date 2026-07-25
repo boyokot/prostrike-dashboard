@@ -53,20 +53,20 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 20:21 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 20:41 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
 
 <div class="kpi-grid">
   <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
-  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.58M</div><div class="sub">Margin 81%</div></div>
-  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 719K</div><div class="sub">Margin 22.6%</div></div>
+  <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.66M</div><div class="sub">Margin 82%</div></div>
+  <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 798K</div><div class="sub">Margin 24.5%</div></div>
   <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 507K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 79K</div></div>
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 488K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.31M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.8x</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.39M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.3x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -130,6 +130,20 @@ canvas { width: 100% !important; max-height: 320px; }
       <tbody>
       <tr>
         <td>25 Jul 2026</td>
+        <td>Koreksi piutang Shopee: penjualan belum tercatat atas pencairan terdahulu</td>
+        <td>PENDAPATAN PENJUALAN</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Koreksi piutang Shopee: penjualan belum tercatat atas pencairan terdahulu</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit">Rp 79.000</td>
+        <td class="money credit"></td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
         <td>Penarikan saldo Shopee</td>
         <td>PIUTANG SHOPEE</td>
         <td class="money debit"></td>
@@ -184,26 +198,12 @@ canvas { width: 100% !important; max-height: 320px; }
         <td class="money debit"></td>
         <td class="money credit">Rp 23.666</td>
       </tr>
-      <tr>
-        <td>25 Jul 2026</td>
-        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
-        <td>BEBAN BAHAN BAKU PENDUKUNG</td>
-        <td class="money debit">Rp 625</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>25 Jul 2026</td>
-        <td>hpp penjualan essen gorilla amis wangi 1 pcs</td>
-        <td>BEBAN BAHAN BAKU UTAMA</td>
-        <td class="money debit">Rp 23.666</td>
-        <td class="money credit"></td>
-      </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<div class="footer">Auto-generated 25 Jul 2026 20:21 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 25 Jul 2026 20:41 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.811, 0.226, 5.82, 0.041, 0.167, 0.174],
+      data: [0.816, 0.245, 6.28, 0.040, 0.182, 0.189],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
