@@ -53,7 +53,7 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 20:17 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 25 Jul 2026 20:21 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
@@ -63,10 +63,10 @@ canvas { width: 100% !important; max-height: 320px; }
   <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.58M</div><div class="sub">Margin 81%</div></div>
   <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 719K</div><div class="sub">Margin 22.6%</div></div>
   <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 507K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 316K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 488K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.63M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">7.7x</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.31M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">5.8x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -131,6 +131,13 @@ canvas { width: 100% !important; max-height: 320px; }
       <tr>
         <td>25 Jul 2026</td>
         <td>Penarikan saldo Shopee</td>
+        <td>PIUTANG SHOPEE</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
+      </tr>
+      <tr>
+        <td>25 Jul 2026</td>
+        <td>Biaya platform Shopee</td>
         <td>BIAYA PLATFORM</td>
         <td class="money debit">Rp 23.097</td>
         <td class="money credit"></td>
@@ -144,14 +151,14 @@ canvas { width: 100% !important; max-height: 320px; }
       </tr>
       <tr>
         <td>25 Jul 2026</td>
-        <td>Penarikan saldo Shopee</td>
-        <td>PIUTANG SHOPEE</td>
-        <td class="money debit">Rp 79.000</td>
-        <td class="money credit"></td>
+        <td>Penarikan saldo TikTok Shop</td>
+        <td>PIUTANG TIKTOK SHOP</td>
+        <td class="money debit"></td>
+        <td class="money credit">Rp 79.000</td>
       </tr>
       <tr>
         <td>25 Jul 2026</td>
-        <td>Penarikan saldo TikTok Shop</td>
+        <td>Biaya platform TikTok Shop</td>
         <td>BIAYA PLATFORM</td>
         <td class="money debit">Rp 17.303</td>
         <td class="money credit"></td>
@@ -161,13 +168,6 @@ canvas { width: 100% !important; max-height: 320px; }
         <td>Penarikan saldo TikTok Shop</td>
         <td>KAS DI BANK</td>
         <td class="money debit">Rp 61.697</td>
-        <td class="money credit"></td>
-      </tr>
-      <tr>
-        <td>25 Jul 2026</td>
-        <td>Penarikan saldo TikTok Shop</td>
-        <td>PIUTANG TIKTOK SHOP</td>
-        <td class="money debit">Rp 79.000</td>
         <td class="money credit"></td>
       </tr>
       <tr>
@@ -203,7 +203,7 @@ canvas { width: 100% !important; max-height: 320px; }
   </div>
 </div>
 
-<div class="footer">Auto-generated 25 Jul 2026 20:17 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 25 Jul 2026 20:21 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.811, 0.226, 7.67, 0.038, 0.155, 0.161],
+      data: [0.811, 0.226, 5.82, 0.041, 0.167, 0.174],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
