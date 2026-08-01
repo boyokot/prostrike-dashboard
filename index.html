@@ -6,60 +6,71 @@
 <title>Dashboard Keuangan Prostrike 2026</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1923; color: #e0e0e0; padding: 20px; }
-.header { text-align: center; padding: 20px; background: linear-gradient(135deg, #1a3a5c, #0d2137); border-radius: 12px; margin-bottom: 20px; }
-.header h1 { font-size: 28px; color: #fff; }
-.header p { color: #8ab4d6; margin-top: 5px; }
-.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.kpi-card { background: #162230; border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #1e3448; }
-.kpi-card .label { font-size: 11px; color: #7a9bb5; text-transform: uppercase; letter-spacing: 0.5px; }
-.kpi-card .value { font-size: 20px; font-weight: 700; color: #fff; margin-top: 4px; }
-.kpi-card .sub { font-size: 11px; color: #4caf84; margin-top: 2px; }
-.chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.chart-card { background: #162230; border-radius: 10px; padding: 16px; border: 1px solid #1e3448; }
-.chart-card.full { grid-column: 1 / -1; }
-.chart-card h3 { font-size: 14px; color: #8ab4d6; margin-bottom: 12px; }
-canvas { width: 100% !important; max-height: 320px; }
-.footer { text-align: center; margin-top: 20px; font-size: 11px; color: #4a6b85; }
-.refresh-btn { display: inline-block; margin: 10px 0 0 0; padding: 8px 20px; background: #2e8b57; color: #fff; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; transition: background 0.2s; }
-.refresh-btn:hover { background: #3aa86a; }
-.refresh-btn:active { background: #247148; }
-.refresh-btn.loading { opacity: 0.6; pointer-events: none; }
-#refresh-status { font-size: 12px; color: #8ab4d6; margin-left: 10px; display: inline-block; }
-.stock-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.stock-card { border-radius: 10px; padding: 14px 16px; text-align: center; border: 1px solid; }
-.stock-card.critical { background: #2a1518; border-color: #e74c3c; }
-.stock-card.warning { background: #2a2210; border-color: #f39c12; }
-.stock-card.ok { background: #162230; border-color: #1e3448; }
-.stock-card .stock-icon { font-size: 24px; margin-bottom: 4px; }
-.stock-card .stock-label { font-size: 11px; color: #7a9bb5; text-transform: uppercase; letter-spacing: 0.5px; }
-.stock-card .stock-value { font-size: 28px; font-weight: 700; margin: 2px 0; }
-.stock-card.critical .stock-value { color: #e74c3c; }
-.stock-card.warning .stock-value { color: #f39c12; }
-.stock-card.ok .stock-value { color: #2ecc71; }
-.stock-card .stock-detail { font-size: 10px; color: #888; margin-top: 2px; }
-.table-wrap { overflow-x: auto; }
-.tx-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.tx-table th, .tx-table td { padding: 10px 8px; border-bottom: 1px solid #1e3448; text-align: left; vertical-align: top; }
-.tx-table th { color: #8ab4d6; font-size: 11px; text-transform: uppercase; letter-spacing: 0.4px; }
-.tx-table td { color: #d8e2ea; }
-.tx-table .money { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.tx-table .debit { color: #4caf84; }
-.tx-table .credit { color: #e57373; }
+:root { --bg:#080b10; --surface:#10141b; --surface-2:#151a23; --line:#252b36; --text:#f4f7fb; --muted:#929baa; --green:#45d483; --red:#ff7070; --amber:#f5b942; --blue:#75a7ff; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:var(--bg); color:var(--text); padding:0; line-height:1.5; }
+.app { width:min(1180px,100%); margin:auto; padding:20px; }
+.header { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 24px; background:var(--surface); border:1px solid var(--line); border-radius:18px; margin-bottom:14px; box-shadow:0 14px 38px rgba(0,0,0,.22); }
+.brand { display:flex; align-items:center; gap:13px; min-width:0; }
+.brand-mark { width:42px; height:42px; flex:none; display:grid; place-items:center; border-radius:12px; background:#e9ff52; color:#10130b; font-size:18px; font-weight:900; }
+.header h1 { font-size:clamp(20px,3vw,28px); letter-spacing:-.04em; line-height:1.1; }
+.header p { color:var(--muted); margin-top:5px; font-size:12px; }
+.header-actions { display:flex; align-items:center; gap:8px; }
+.quick-nav { display:flex; gap:8px; overflow-x:auto; padding:2px 0 14px; scrollbar-width:none; }
+.quick-nav::-webkit-scrollbar { display:none; }
+.quick-nav a { min-height:40px; display:inline-flex; align-items:center; flex:none; padding:0 14px; border:1px solid var(--line); border-radius:999px; color:var(--muted); background:var(--surface); text-decoration:none; font-size:12px; font-weight:650; }
+.quick-nav a:hover { color:var(--text); border-color:#3d4655; }
+.section-head { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:24px 2px 10px; }
+.section-head h2 { font-size:16px; letter-spacing:-.02em; }
+.section-head p { color:var(--muted); font-size:11px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.kpi-card { min-width:0; background:var(--surface); border-radius:14px; padding:16px; border:1px solid var(--line); }
+.kpi-card.primary { background:#e9ff52; color:#11150a; border-color:#e9ff52; }
+.kpi-card .label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.09em; font-weight:750; }
+.kpi-card.primary .label,.kpi-card.primary .sub { color:#465014; }
+.kpi-card .value { font-size:clamp(18px,2.3vw,25px); font-weight:760; letter-spacing:-.045em; margin-top:8px; white-space:nowrap; }
+.kpi-card .sub { font-size:11px; color:var(--green); margin-top:4px; font-weight:650; }
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.chart-card { min-width:0; background:var(--surface); border-radius:16px; padding:18px; border:1px solid var(--line); }
+.chart-card.full { grid-column:1/-1; }
+.chart-card h3 { font-size:13px; color:var(--text); margin-bottom:16px; letter-spacing:-.01em; }
+canvas { width:100% !important; max-height:320px; }
+.footer { text-align:center; margin:24px 0 4px; font-size:11px; color:#596271; }
+.refresh-btn { min-height:44px; padding:0 16px; background:var(--text); color:var(--bg); border:0; border-radius:11px; font-size:12px; font-weight:750; cursor:pointer; }
+.refresh-btn:hover { opacity:.9; } .refresh-btn:active { transform:scale(.98); } .refresh-btn.loading { opacity:.55; pointer-events:none; }
+#refresh-status { font-size:12px; color:var(--muted); }
+.stock-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+.stock-card { border-radius:14px; padding:15px; text-align:left; border:1px solid var(--line); background:var(--surface); }
+.stock-card.critical { border-color:#7d3339; background:#1b1115; } .stock-card.warning { border-color:#6b5324; background:#1b1810; }
+.stock-card .stock-icon { font-size:14px; margin-bottom:12px; }
+.stock-card .stock-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; font-weight:700; }
+.stock-card .stock-value { font-size:24px; font-weight:760; letter-spacing:-.04em; margin-top:5px; }
+.stock-card.critical .stock-value { color:var(--red); } .stock-card.warning .stock-value { color:var(--amber); } .stock-card.ok .stock-value { color:var(--green); }
+.table-wrap { overflow-x:auto; border-radius:10px; }
+.tx-table { width:100%; border-collapse:collapse; font-size:12px; min-width:720px; }
+.tx-table th,.tx-table td { padding:12px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+.tx-table th { position:sticky; top:0; background:var(--surface); color:var(--muted); font-size:9px; text-transform:uppercase; letter-spacing:.08em; }
+.tx-table td { color:#dce2eb; } .tx-table tbody tr:hover { background:var(--surface-2); }
+.tx-table .money { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; font-weight:650; }
+.tx-table .debit { color:var(--green); } .tx-table .credit { color:var(--red); }
+@media(max-width:760px) { .app { padding:12px; } .header { align-items:flex-start; padding:16px; } .brand-mark { width:38px;height:38px; } .header-actions #refresh-status { display:none; } .refresh-btn { width:44px; padding:0; font-size:0; } .refresh-btn::before { content:'↻'; font-size:20px; } .kpi-grid { grid-template-columns:1fr 1fr; } .chart-grid { grid-template-columns:1fr; } .chart-card.full { grid-column:auto; } .chart-card { padding:14px; } canvas { max-height:260px; } .section-head p { display:none; } }
+@media(max-width:380px) { .kpi-card { padding:13px; } .kpi-card .value { font-size:17px; } .stock-grid { grid-template-columns:1fr 1fr; } }
+@media(prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; transition:none !important; } }
 </style>
 </head>
 <body>
-
+<main class="app">
 <div class="header">
-  <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 01 Aug 2026 17:07 WIB</span></p>
-  <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
-  <span id="refresh-status"></span>
+  <div class="brand"><div class="brand-mark" aria-hidden="true">P</div><div><h1>Keuangan Prostrike</h1><p><span id="ts">Diperbarui 01 Aug 2026 17:23 WIB</span></p></div></div>
+  <div class="header-actions"><button class="refresh-btn" onclick="doRefresh()" id="refresh-btn" aria-label="Muat ulang data">Refresh data</button><span id="refresh-status" aria-live="polite"></span></div>
 </div>
 
+<nav class="quick-nav" aria-label="Navigasi dashboard"><a href="#ringkasan">Ringkasan</a><a href="#stok">Stok</a><a href="#tren">Tren bisnis</a><a href="#transaksi">Transaksi</a></nav>
+
+<section id="ringkasan"><div class="section-head"><div><h2>Ringkasan bisnis</h2><p>Posisi keuangan dan performa utama</p></div></div>
 <div class="kpi-grid">
-  <div class="kpi-card"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
+  <div class="kpi-card primary"><div class="label">Pendapatan</div><div class="value">Rp 2.86M</div></div>
   <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.76M</div><div class="sub">Margin 81%</div></div>
   <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 1366K</div><div class="sub">Margin 40.0%</div></div>
   <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 585K</div></div>
@@ -67,8 +78,9 @@ canvas { width: 100% !important; max-height: 320px; }
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 439K</div></div>
   <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.34M</div></div>
   <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.0x</div></div>
-</div>
+</div></section>
 
+<section id="stok"><div class="section-head"><div><h2>Kesehatan stok</h2><p>Status persediaan barang siap jual</p></div></div>
 <div class="stock-grid">
   <div class="stock-card warning">
     <div class="stock-icon">🟡</div>
@@ -95,8 +107,9 @@ canvas { width: 100% !important; max-height: 320px; }
     <div class="stock-label">🧻 Bubble Wrap</div>
     <div class="stock-value">23 pcs</div>
   </div>
-</div>
+</div></section>
 
+<section id="tren"><div class="section-head"><div><h2>Tren & analisis</h2><p>Grafik performa untuk pengambilan keputusan</p></div></div>
 <div class="chart-grid">
   <div class="chart-card full">
     <h3>Pendapatan & Profit per Bulan</h3>
@@ -118,9 +131,9 @@ canvas { width: 100% !important; max-height: 320px; }
     <h3>Rasio Keuangan</h3>
     <canvas id="chart5"></canvas>
   </div>
-</div>
+</div></section>
 
-<div class="chart-card full" style="margin-top:16px;">
+<section id="transaksi"><div class="section-head"><div><h2>Aktivitas terbaru</h2><p>10 baris terakhir dari Jurnal Umum</p></div></div><div class="chart-card full">
   <h3>10 Transaksi Terakhir (Jurnal Umum)</h3>
   <div class="table-wrap">
     <table class="tx-table">
@@ -201,9 +214,10 @@ canvas { width: 100% !important; max-height: 320px; }
       </tbody>
     </table>
   </div>
-</div>
+</div></section>
 
-<div class="footer">Auto-generated 01 Aug 2026 17:07 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 01 Aug 2026 17:23 WIB · Data dari Google Sheets</div>
+</main>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
