@@ -53,7 +53,7 @@ canvas { width: 100% !important; max-height: 320px; }
 
 <div class="header">
   <h1>Dashboard Keuangan Prostrike</h1>
-  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 01 Aug 2026 16:58 WIB</span></p>
+  <p>Januari – Juni 2026 · <span id="ts">Auto-refresh: 01 Aug 2026 17:07 WIB</span></p>
   <button class="refresh-btn" onclick="doRefresh()" id="refresh-btn">🔄 Refresh Data</button>
   <span id="refresh-status"></span>
 </div>
@@ -63,10 +63,10 @@ canvas { width: 100% !important; max-height: 320px; }
   <div class="kpi-card"><div class="label">Laba Kotor</div><div class="value">Rp 2.76M</div><div class="sub">Margin 81%</div></div>
   <div class="kpi-card"><div class="label">Laba Bersih</div><div class="value">Rp 1366K</div><div class="sub">Margin 40.0%</div></div>
   <div class="kpi-card"><div class="label">Kas</div><div class="value">Rp 585K</div></div>
-  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 79K</div></div>
+  <div class="kpi-card"><div class="label">Piutang</div><div class="value">Rp 0K</div></div>
   <div class="kpi-card"><div class="label">Persediaan</div><div class="value">Rp 439K</div></div>
-  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.42M</div></div>
-  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.5x</div></div>
+  <div class="kpi-card"><div class="label">Total Aset</div><div class="value">Rp 4.34M</div></div>
+  <div class="kpi-card"><div class="label">Current Ratio</div><div class="value">6.0x</div></div>
 </div>
 
 <div class="stock-grid">
@@ -203,7 +203,7 @@ canvas { width: 100% !important; max-height: 320px; }
   </div>
 </div>
 
-<div class="footer">Auto-generated 01 Aug 2026 16:58 WIB · Data dari Google Sheets</div>
+<div class="footer">Auto-generated 01 Aug 2026 17:07 WIB · Data dari Google Sheets</div>
 
 <script>
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"];
@@ -303,7 +303,7 @@ new Chart(document.getElementById('chart5'), {
     labels: ['Gross Margin', 'Net Margin', 'Current Ratio', 'D/E Ratio', 'ROA', 'ROE'],
     datasets: [{
       label: 'Nilai',
-      data: [0.810, 0.400, 6.46, 0.040, 0.309, 0.321],
+      data: [0.810, 0.400, 5.99, 0.041, 0.315, 0.327],
       backgroundColor: ['#2ecc71','#27ae60','#3498db','#e74c3c','#f39c12','#9b59b6'],
       borderRadius: 4
     }]
